@@ -1,0 +1,44 @@
+import {navLinks} from "./partials/navLinks.js";
+import NavigationLink from "./partials/NavigationLink.jsx";
+import SearchBar from "../searchBar/SearchBar.jsx";
+import ThemeToggler from "../themeToggler/ThemeToggler.jsx";
+import './navigation.css'
+import {useLocation} from "react-router-dom";
+
+const Navigation = () => {
+    const {pathname} = useLocation()
+
+    return (
+        <>
+            <nav>
+                <div className="container-fluid d-flex justify-content-between align-items-center p-3">
+                    <div className="navigation-brand">
+                        <a
+                            className="text-decoration-none fs-3 fw-bold"
+                            href='/'
+                        >
+                            EpiBooks
+                        </a>
+                    </div>
+                    <div className="d-flex align-items-center gap-3 navigation-links">
+                        {
+                            navLinks.map((link, index) => (
+                                <NavigationLink
+                                    className={pathname === link.link ? 'active-link' : ''}
+                                    key={`navigation-link-${index}`}
+                                    link={link}
+                                />
+                            ))
+                        }
+                    </div>
+                    <div className="d-flex align-items-center gap-2 navigation-action">
+                        <SearchBar/>
+                        <ThemeToggler/>
+                    </div>
+                </div>
+            </nav>
+        </>
+    );
+};
+
+export default Navigation;
