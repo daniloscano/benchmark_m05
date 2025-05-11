@@ -24,10 +24,6 @@ export const BooksProvider = ({ children }) => {
         })
     }
 
-    const selectedBookHandler = (book) => {
-        setSelectedBook(book)
-    }
-
     const getAllBooks = async () => {
         try {
             setIsLoading(true)
@@ -45,7 +41,7 @@ export const BooksProvider = ({ children }) => {
         <BooksContext.Provider value={
             {
                 books, getAllBooks,
-                selectedBook, selectedBookHandler,
+                selectedBook, setSelectedBook,
                 isLoading,
                 error,
                 query, onSearchChange, searchHandler

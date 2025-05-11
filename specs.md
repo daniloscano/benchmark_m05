@@ -2,7 +2,7 @@
 
 Componenti:
 - **ReactRouterDom** => rotta '/' per Homepage, '/detail/:asin' dettagli libro
-- **Navigation** => Home, About, Browse
+- **Navigation** => HomePage, About, Browse
 - **Footer**
 - **Welcome** => alert e titolo app
 - **AllTheBooks** => renderizza griglia con copertine libri

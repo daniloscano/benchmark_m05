@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import DetailPage from "./pages/DetailPage.jsx";
 
 const App = () => {
 
@@ -7,9 +8,9 @@ const App = () => {
         <>
         <Router>
             <Routes>
-                <Route index path='/' element={<Home />} />
+                <Route index path='/' element={<HomePage />} />
 
-                <Route path='/detail/:asin' element={<h1>BookDetails</h1>} />
+                <Route path='/detail/:asin' element={<DetailPage />} />
 
                 <Route path='*' element={<h1>404 Page not Found</h1>} />
             </Routes>

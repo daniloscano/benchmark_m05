@@ -2,7 +2,7 @@ import BaseLayout from "../layouts/BaseLayout.jsx";
 import BooksGrid from "../components/booksGrid/BooksGrid.jsx";
 import Hero from "../components/hero/Hero.jsx";
 
-const Home = () => {
+const HomePage = () => {
     return (
         <>
             <BaseLayout>
@@ -15,4 +15,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default HomePage;
