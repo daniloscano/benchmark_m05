@@ -1,16 +1,16 @@
-a {
+.navigation-link {
     text-decoration: none;
     color: var(--text-secondary);
     transition: all 0.3s ease;
 }
 
-a:hover {
+.navigation-link:hover {
     color: var(--text-primary);
     font-weight: bold;
     transform: scale(1.05);
 }
 
-a.active-link {
+.navigation-link.active-link {
     color: var(--text-primary);
     font-weight: bold;
     transform: scale(1.05);

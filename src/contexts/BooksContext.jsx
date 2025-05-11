@@ -7,15 +7,33 @@ export const BooksProvider = ({ children }) => {
     const [ isLoading, setIsLoading ] = useState(false)
     const [ error, setError ] = useState('')
     const [ query, setQuery ] = useState('')
+    const [ selectedBook, setSelectedBook ] = useState({})
 
     const onSearchChange = (e) => {
         setQuery(e.target.value)
     }
 
+    const getAllBooks = async () => {
+        try {
+            setIsLoading(true)
+            const response = await fetch('https://epibooks.onrender.com')
+            const data = await response.json()
+            setBooks(data)
+        } catch (e) {
+            setError(e.message)
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
     return (
         <BooksContext.Provider value={
             {
-                books, isLoading, error, query, onSearchChange
+                books, getAllBooks,
+                selectedBook,
+                isLoading,
+                error,
+                query, onSearchChange
             }
         }>
             { children }

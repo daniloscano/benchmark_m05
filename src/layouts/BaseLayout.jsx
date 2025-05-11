@@ -5,10 +5,8 @@ const BaseLayout = ({children}) => {
     return (
         <>
             <Navigation/>
-            <main>
-                {children}
-            </main>
-            <Footer />
+            {children}
+            <Footer/>
         </>
     );
 };

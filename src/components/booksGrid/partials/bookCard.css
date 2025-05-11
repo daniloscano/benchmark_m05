@@ -1,0 +1,37 @@
+.book-card {
+    position: relative;
+    width: 100%;
+    min-height: 280px;
+    max-height: 320px;
+    overflow: hidden;
+}
+
+.card-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+    transition: transform 0.4s ease;
+}
+
+.card-details {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.book-card.hovered .card-details {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.book-card.hovered .card-title {
+    transform: translateY(-200%);
+}

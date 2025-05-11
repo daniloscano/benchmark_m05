@@ -1,11 +1,16 @@
-.theme-btn {
+header {
+    height: 80dvh;
     background-color: var(--background-secondary);
-    color: var(--text-secondary);
+}
+
+.to-books-btn {
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
     outline: solid 2px var(--text-secondary);
     transition: all 0.3s ease;
 }
 
-.theme-btn:hover {
+.to-books-btn:hover {
     background-color: var(--text-secondary);
     color: var(--background-secondary);
     outline: solid 2px var(--text-secondary);

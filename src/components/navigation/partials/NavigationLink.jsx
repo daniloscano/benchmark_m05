@@ -7,7 +7,7 @@ const NavigationLink = ({ link }) => {
     return (
         <>
             <Link
-                className={pathname === link.link ? 'active-link' : ''}
+                className={`navigation-link ${pathname === link.link ? 'active-link' : ''}`}
                 to={link.link}
             >
                 {link.section}

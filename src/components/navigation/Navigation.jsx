@@ -10,23 +10,25 @@ const Navigation = () => {
         <>
             <nav>
                 <div className="container-fluid d-flex justify-content-between align-items-center p-3">
-                    <div className="navigation-brand">
-                        <a
-                            className="text-decoration-none fs-3 fw-bold"
-                            href='/'
-                        >
-                            EpiBooks
-                        </a>
-                    </div>
-                    <div className="d-flex align-items-center gap-3 navigation-links">
-                        {
-                            navLinks.map((link, index) => (
-                                <NavigationLink
-                                    key={`navigation-link-${index}`}
-                                    link={link}
-                                />
-                            ))
-                        }
+                    <div className="d-flex align-items-center gap-4 navigation-content">
+                        <div className="navigation-brand">
+                            <a
+                                className="text-decoration-none fs-3 fw-bold"
+                                href='/'
+                            >
+                                EpiBooks
+                            </a>
+                        </div>
+                        <div className="d-flex align-items-center gap-3 navigation-links">
+                            {
+                                navLinks.map((link, index) => (
+                                    <NavigationLink
+                                        key={`navigation-link-${index}`}
+                                        link={link}
+                                    />
+                                ))
+                            }
+                        </div>
                     </div>
                     <div className="d-flex align-items-center gap-2 navigation-action">
                         <SearchBar/>

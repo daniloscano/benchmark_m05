@@ -1,10 +1,15 @@
 import BaseLayout from "../layouts/BaseLayout.jsx";
+import BooksGrid from "../components/booksGrid/BooksGrid.jsx";
+import Hero from "../components/hero/Hero.jsx";
 
 const Home = () => {
     return (
         <>
             <BaseLayout>
-                <h1>HomePage</h1>
+                <Hero/>
+                <main>
+                    <BooksGrid/>
+                </main>
             </BaseLayout>
         </>
     );
