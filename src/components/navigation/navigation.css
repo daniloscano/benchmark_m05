@@ -1,4 +1,9 @@
 nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 20;
     background-color: var(--background-secondary);
     border-bottom: solid 3px var(--border);
 }

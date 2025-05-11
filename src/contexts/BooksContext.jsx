@@ -13,6 +13,21 @@ export const BooksProvider = ({ children }) => {
         setQuery(e.target.value)
     }
 
+    const searchHandler = () => {
+        setTimeout( () => {
+            if (query === '') {
+                getAllBooks()
+            } else {
+                const matchingBooks = books.filter(book => book.title.toLowerCase().includes(query.toLowerCase()))
+                setBooks(matchingBooks)
+            }
+        })
+    }
+
+    const selectedBookHandler = (book) => {
+        setSelectedBook(book)
+    }
+
     const getAllBooks = async () => {
         try {
             setIsLoading(true)
@@ -30,10 +45,10 @@ export const BooksProvider = ({ children }) => {
         <BooksContext.Provider value={
             {
                 books, getAllBooks,
-                selectedBook,
+                selectedBook, selectedBookHandler,
                 isLoading,
                 error,
-                query, onSearchChange
+                query, onSearchChange, searchHandler
             }
         }>
             { children }

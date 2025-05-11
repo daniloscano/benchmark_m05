@@ -3,6 +3,11 @@ header {
     background-color: var(--background-secondary);
 }
 
+.hero-title,
+.hero-subtitle {
+    color: var(--text-primary);
+}
+
 .to-books-btn {
     background-color: var(--background-secondary);
     color: var(--text-primary);
