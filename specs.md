@@ -12,7 +12,7 @@ Componenti:
  e *AddComment* con un form per inserire o modificare una recensione,
  in una sezione a destra della viewport
 - *BooksContext* gestisce tutti gli stati di libri e commenti
-- *ThemeContext* => gestisce tema light/dark
+- **DONE** *ThemeContext* => gestisce tema light/dark
 
 
 **API**:

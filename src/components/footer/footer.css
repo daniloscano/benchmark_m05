@@ -1,0 +1,25 @@
+footer {
+    background-color: var(--background-secondary);
+    border-top: solid 3px var(--border);
+}
+
+footer a {
+    color: var(--text-primary);
+}
+
+.copyright {
+    color: var(--text-secondary);
+}
+
+.to-top-btn {
+    background-color: var(--background-secondary);
+    color: var(--text-secondary);
+    outline: solid 2px var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.to-top-btn:hover {
+    background-color: var(--text-secondary);
+    color: var(--background-secondary);
+    outline: solid 2px var(--background-secondary);
+}

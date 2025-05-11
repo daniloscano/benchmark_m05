@@ -1,5 +1,5 @@
 import Navigation from "../components/navigation/Navigation.jsx";
-import './baseLayout.css'
+import Footer from "../components/footer/Footer.jsx";
 
 const BaseLayout = ({children}) => {
     return (
@@ -8,6 +8,7 @@ const BaseLayout = ({children}) => {
             <main>
                 {children}
             </main>
+            <Footer />
         </>
     );
 };

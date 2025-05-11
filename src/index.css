@@ -19,3 +19,8 @@
     --accent-hover: #C1584A;
     --border: #3A3A3A;
 }
+
+main {
+    min-height: 85dvh;
+    background-color: var(--background-primary);
+}

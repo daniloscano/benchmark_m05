@@ -1,6 +1,6 @@
 nav {
     background-color: var(--background-secondary);
-    border-bottom: solid 3px var(--border)
+    border-bottom: solid 3px var(--border);
 }
 
 .navigation-brand a {
