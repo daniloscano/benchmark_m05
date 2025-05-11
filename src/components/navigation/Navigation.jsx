@@ -3,10 +3,8 @@ import NavigationLink from "./partials/NavigationLink.jsx";
 import SearchBar from "../searchBar/SearchBar.jsx";
 import ThemeToggler from "../themeToggler/ThemeToggler.jsx";
 import './navigation.css'
-import {useLocation} from "react-router-dom";
 
 const Navigation = () => {
-    const {pathname} = useLocation()
 
     return (
         <>
@@ -24,7 +22,6 @@ const Navigation = () => {
                         {
                             navLinks.map((link, index) => (
                                 <NavigationLink
-                                    className={pathname === link.link ? 'active-link' : ''}
                                     key={`navigation-link-${index}`}
                                     link={link}
                                 />

@@ -1,0 +1,12 @@
+.search-input,
+.search-input:focus {
+    background-color: var(--background-secondary);
+    outline: solid 2px var(--text-secondary);
+    color: var(--text-secondary);
+    border: none;
+    padding: 0.48rem .4rem;
+}
+
+.search-input::placeholder {
+    color: var(--text-secondary);
+}
