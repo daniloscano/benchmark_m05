@@ -24,3 +24,11 @@ main {
     min-height: 85dvh;
     background-color: var(--background-primary);
 }
+
+.truncate-2-lines {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
