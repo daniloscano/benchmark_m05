@@ -1,0 +1,11 @@
+.book-title {
+    color: var(--text-primary);
+}
+
+.book-category {
+    color: var(--text-secondary);
+}
+
+.book-price {
+    color: var(--text-primary);
+}

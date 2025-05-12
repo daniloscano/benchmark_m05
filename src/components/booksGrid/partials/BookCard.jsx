@@ -1,18 +1,12 @@
 import './bookCard.css'
-import {useContext, useState} from "react";
+import {useState} from "react";
 import {Link} from "react-router-dom";
-import {BooksContext} from "../../../contexts/BooksContext.jsx";
 
 const BookCard = ({book}) => {
-    const { setSelectedBook } = useContext(BooksContext)
     const [isHover, setIsHover] = useState(false)
 
     const hoverHandler = () => {
         setIsHover(prev => !prev)
-    }
-
-    const selectBookHandler = () => {
-        setSelectedBook(book)
     }
 
     return (
@@ -21,7 +15,6 @@ const BookCard = ({book}) => {
                 <div
                     onMouseOver={hoverHandler}
                     onMouseOut={hoverHandler}
-                    onClick={selectBookHandler}
                     className={`book-card rounded rounded-2 ${isHover ? 'hovered' : ''}`}
                 >
                     <img

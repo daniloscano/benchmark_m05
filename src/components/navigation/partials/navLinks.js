@@ -1,6 +1,6 @@
 export const navLinks = [
     {
-        section: 'HomePage',
+        section: 'Home',
         link: '/'
     },
     {

@@ -1,2 +1,5 @@
 ### GET ALL BOOKS
 GET https://epibooks.onrender.com
+
+### GET BOOK BY ID
+GET https://epibooks.onrender.com/0316389706

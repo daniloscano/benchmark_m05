@@ -4,10 +4,10 @@ export const BooksContext = createContext()
 
 export const BooksProvider = ({ children }) => {
     const [ books, setBooks ] = useState([])
+    const [ bookDetails, setBookDetails ] = useState({})
     const [ isLoading, setIsLoading ] = useState(false)
     const [ error, setError ] = useState('')
     const [ query, setQuery ] = useState('')
-    const [ selectedBook, setSelectedBook ] = useState({})
 
     const onSearchChange = (e) => {
         setQuery(e.target.value)
@@ -21,15 +21,28 @@ export const BooksProvider = ({ children }) => {
                 const matchingBooks = books.filter(book => book.title.toLowerCase().includes(query.toLowerCase()))
                 setBooks(matchingBooks)
             }
-        })
+        }, 600)
     }
 
     const getAllBooks = async () => {
         try {
             setIsLoading(true)
-            const response = await fetch('https://epibooks.onrender.com')
+            const response = await fetch(`${import.meta.env.VITE_BOOKS_ENDPOINT}`)
             const data = await response.json()
             setBooks(data)
+        } catch (e) {
+            setError(e.message)
+        } finally {
+            setIsLoading(false)
+        }
+    }
+
+    const getBookById = async (bookId) => {
+        try {
+            setIsLoading(true)
+            const response = await fetch(`${import.meta.env.VITE_BOOKS_ENDPOINT}/${bookId}`)
+            const data = await response.json()
+            setBookDetails(data[0])
         } catch (e) {
             setError(e.message)
         } finally {
@@ -41,7 +54,7 @@ export const BooksProvider = ({ children }) => {
         <BooksContext.Provider value={
             {
                 books, getAllBooks,
-                selectedBook, setSelectedBook,
+                bookDetails, getBookById,
                 isLoading,
                 error,
                 query, onSearchChange, searchHandler
