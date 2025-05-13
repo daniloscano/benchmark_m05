@@ -9,3 +9,7 @@
 .book-price {
     color: var(--text-primary);
 }
+
+.book-overview {
+    color: var(--text-primary);
+}

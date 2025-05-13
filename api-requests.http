@@ -2,4 +2,9 @@
 GET https://epibooks.onrender.com
 
 ### GET BOOK BY ID
-GET https://epibooks.onrender.com/0316389706
+GET https://epibooks.onrender.com/0316438960
+
+### GET BOOK COMMENTS
+GET https://striveschool-api.herokuapp.com/api/books/0316438960/comments
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2ViMDVhN2U5YTNmMDAwMTUxNDk2MWMiLCJpYXQiOjE3NDYyMDYxOTAsImV4cCI6MTc0NzQxNTc5MH0.wuEHH66UGLC2filDd7Zj-IvtqOn9zwcsNnezNDc9Mis
