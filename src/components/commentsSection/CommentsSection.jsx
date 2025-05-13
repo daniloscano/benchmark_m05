@@ -4,7 +4,7 @@ import CommentForm from "./partials/CommentForm.jsx";
 const CommentsSection = () => {
     return (
         <>
-            <div id="comments-section">
+            <div className="container w-75 mx-auto pt-3 mt-3" id="comments-section">
                 <CommentsList />
                 <CommentForm />
             </div>

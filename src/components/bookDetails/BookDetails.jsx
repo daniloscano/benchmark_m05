@@ -16,7 +16,7 @@ const BookDetails = () => {
     return (
         <>
             <section className="pt-4">
-                <div className="container-fluid">
+                <div className="container">
                     <div className="row">
                         <div className="col col-3">
                             <img
@@ -35,10 +35,11 @@ const BookDetails = () => {
                                 dolore eius enim et ex expedita ipsam laborum obcaecati optio quae recusandae repellat
                                 similique, tenetur veritatis?
                             </p>
+                            <CommentsSection />
                         </div>
                     </div>
                 </div>
-                <CommentsSection />
+
             </section>
         </>
     );

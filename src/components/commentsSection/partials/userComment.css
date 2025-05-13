@@ -1,15 +1,58 @@
 .comment-item {
     background-color: var(--surface);
-    border: solid 1px black;
+    border: solid 2px var(--border);
+    border-radius: 16px;
 }
 
 .comment-user {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 36px;
-    height: 36px;
+    width: 48px;
+    height: 48px;
+    font-size: 1.4em;
+    font-weight: bold;
     background-color: var(--accent);
+    color: var(--text-primary);
     border: solid 1px var(--accent);
     border-radius: 50%;
+}
+
+.comment-text {
+    font-size: 1em;
+    color: var(--text-primary);
+}
+
+.p-rating-item {
+    padding: 0 2px;
+}
+
+.p-rating-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--text-primary);
+}
+
+.edit-btn {
+    background-color: var(--surface);
+    color: var(--text-secondary);
+    border: solid 2px var(--text-secondary);
+}
+
+.edit-btn:hover {
+    background-color: var(--text-secondary);
+    color: var(--surface);
+    border: solid 2px var(--text-secondary);
+}
+
+.delete-btn {
+    background-color: #FF0000;
+    color: var(--text-primary);
+    border: solid 2px #FF0000;
+}
+
+.delete-btn:hover {
+    background-color: var(--text-primary);
+    color: #FF0000;
+    border: solid 2px var(--text-primary);
 }

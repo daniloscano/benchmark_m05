@@ -5,7 +5,7 @@ import {useParams} from "react-router-dom";
 
 const CommentsList = () => {
     const {commentsList, getBookComments} = useContext(CommentsContext)
-    const { asin } = useParams()
+    const {asin} = useParams()
 
     useEffect(() => {
         getBookComments(asin)
@@ -13,14 +13,16 @@ const CommentsList = () => {
 
     return (
         <>
-            {
-                commentsList && commentsList.map((comment, index) => (
-                    <UserComment
-                        key={`user-comment-${index}`}
-                        comment={comment}
-                    />
-                ))
-            }
+            <div className="container">
+                {
+                    commentsList && commentsList.map((comment, index) => (
+                        <UserComment
+                            key={`user-comment-${index}`}
+                            comment={comment}
+                        />
+                    ))
+                }
+            </div>
         </>
     );
 };
