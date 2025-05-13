@@ -1,6 +1,7 @@
 import {Rating} from "primereact/rating";
 import './userComment.css'
 import {useEffect, useRef, useState} from "react";
+import {Pencil, Send, Trash} from "lucide-react";
 
 const UserComment = ({comment}) => {
     const [onEdit, setOnEdit] = useState(false)
@@ -68,12 +69,15 @@ const UserComment = ({comment}) => {
                 <div className="col col-2 d-flex justify-content-start gap-2">
                     <button
                         onClick={editHandler}
-                        className="btn rounded rounded-2 edit-btn"
+                        className="btn d-flex justify-content-center align-items-center rounded rounded-2 p-2 edit-btn"
                     >
-                        E
+                        {
+                            !onEdit ? <Pencil size={20} /> : <Send size={20} />
+                        }
+
                     </button>
-                    <button className="btn rounded rounded-2 delete-btn">
-                        D
+                    <button className="btn d-flex justify-content-center align-items-center rounded rounded-2 p-2 delete-btn">
+                        <Trash size={20} />
                     </button>
                 </div>
             </div>
