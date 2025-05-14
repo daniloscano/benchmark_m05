@@ -1,6 +1,6 @@
 import {useContext, useEffect} from "react";
 import {BooksContext} from "../../contexts/BooksContext.jsx";
-import BookCard from "./partials/BookCard.jsx";
+import BookCard from "../bookCard/BookCard.jsx";
 import './booksGrid.css'
 
 const BooksGrid = () => {
@@ -17,7 +17,7 @@ const BooksGrid = () => {
     return (
         <>
             <section className="pt-5" id="all-books">
-                <div className="container-fluid p-3">
+                <div className="container p-3">
                     <h1 className="mt-3 section-title">Books</h1>
                     <div className="row row-cols-1 row-cols-md-3 row-cols-lg-5 gy-4 mt-2">
                         {

@@ -1,0 +1,16 @@
+.comments-list-container {
+    max-height: 240px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.comments-list-container::-webkit-scrollbar {
+    display: none;
+}
+
+.no-user-comments {
+    background-color: var(--surface);
+    border: solid 2px var(--border);
+    border-radius: 16px;
+}

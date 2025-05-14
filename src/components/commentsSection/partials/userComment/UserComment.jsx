@@ -2,7 +2,7 @@ import {Rating} from "primereact/rating";
 import './userComment.css'
 import {useContext, useEffect, useRef, useState} from "react";
 import {Pencil, Send, Trash} from "lucide-react";
-import {CommentsContext} from "../../../contexts/CommentsContext.jsx";
+import {CommentsContext} from "../../../../contexts/CommentsContext.jsx";
 import {useParams} from "react-router-dom";
 
 const UserComment = ({comment}) => {

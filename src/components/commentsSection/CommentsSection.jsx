@@ -1,5 +1,5 @@
-import CommentsList from "./partials/CommentsList.jsx";
-import CommentForm from "./partials/CommentForm.jsx";
+import CommentsList from "./partials/commentsList/CommentsList.jsx";
+import CommentForm from "./partials/commentForm/CommentForm.jsx";
 
 const CommentsSection = () => {
     return (

@@ -2,7 +2,7 @@ import {Rating} from "primereact/rating";
 import {useContext, useState} from "react";
 import './commentForm.css'
 import {useParams} from "react-router-dom";
-import {CommentsContext} from "../../../contexts/CommentsContext.jsx";
+import {CommentsContext} from "../../../../contexts/CommentsContext.jsx";
 
 const CommentForm = () => {
     const { asin } = useParams()
