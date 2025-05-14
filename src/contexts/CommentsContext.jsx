@@ -43,11 +43,44 @@ export const CommentsProvider = ({ children }) => {
         }
     }
 
+    const putBookComment = async (commentId, payload) => {
+        try {
+            const response = await fetch(
+                `${import.meta.env.VITE_EDIT_COMMENTS_ENDPOINT}/${commentId}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${import.meta.env.VITE_API_KEY}`
+                    },
+                    body: JSON.stringify(payload)
+                });
+            return await response.json();
+        } catch (e) {
+            setError(e.message)
+        }
+    }
+
+    const deleteBookComment = async (commentId) => {
+        try {
+            const response = await fetch(
+                `${import.meta.env.VITE_EDIT_COMMENTS_ENDPOINT}/${commentId}`, {
+                    method: "DELETE",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${import.meta.env.VITE_API_KEY}`
+                    }
+                });
+            return await response.json();
+        } catch (e) {
+            setError(e.message)
+        }
+    }
+
     return (
         <CommentsContext.Provider value={
             {
                 commentsList, getBookComments,
-                postBookComment,
+                postBookComment, putBookComment, deleteBookComment,
                 isLoading, error
             }
         }>

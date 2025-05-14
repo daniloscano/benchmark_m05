@@ -1,17 +1,32 @@
 import {Rating} from "primereact/rating";
 import './userComment.css'
-import {useEffect, useRef, useState} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {Pencil, Send, Trash} from "lucide-react";
+import {CommentsContext} from "../../../contexts/CommentsContext.jsx";
+import {useParams} from "react-router-dom";
 
 const UserComment = ({comment}) => {
+    const { getBookComments, putBookComment, deleteBookComment } = useContext(CommentsContext)
     const [onEdit, setOnEdit] = useState(false)
     const [text, setText] = useState(comment.comment)
     const [rating, setRating] = useState(comment.rate)
 
+    const { asin } = useParams()
+
     const inputRef = useRef(null)
 
-    const editHandler = () => {
-        setOnEdit(prev => !prev)
+    const editHandler = async () => {
+        setOnEdit(prev => !prev);
+
+        if(onEdit) {
+            await editComment();
+            await getBookComments(asin);
+        }
+    }
+
+    const deleteHandler = async () => {
+        await deleteBookComment(comment._id);
+        await getBookComments(asin);
     }
 
     const commentChange = (e) => {
@@ -20,6 +35,20 @@ const UserComment = ({comment}) => {
 
     const ratingChange = (e) => {
         setRating(e.target.value)
+    }
+
+    const commentPayload = () => {
+        return {
+            comment: text,
+            rate: rating.toString(),
+            elementId: asin
+        }
+    }
+
+    const editComment = async () => {
+        await putBookComment(comment._id, commentPayload());
+
+        await getBookComments(asin);
     }
 
     useEffect(() => {
@@ -77,7 +106,10 @@ const UserComment = ({comment}) => {
                         }
 
                     </button>
-                    <button className="btn d-flex justify-content-center align-items-center rounded rounded-2 p-2 delete-btn">
+                    <button
+                        onClick={deleteHandler}
+                        className="btn d-flex justify-content-center align-items-center rounded rounded-2 p-2 delete-btn"
+                    >
                         <Trash size={20} />
                     </button>
                 </div>
