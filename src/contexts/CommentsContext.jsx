@@ -6,6 +6,8 @@ export const CommentsProvider = ({ children }) => {
     const [ commentsList, setCommentsList ] = useState([])
     const [ isLoading, setIsLoading ] = useState(false)
     const [ error, setError ] = useState('')
+    const [ success, setSuccess ] = useState('')
+    const [ fail, setFail ] = useState('')
     
     const getBookComments = async (bookId) => {
         try {
