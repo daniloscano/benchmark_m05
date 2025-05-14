@@ -39,7 +39,7 @@
 .p-rating-icon {
     width: 16px;
     height: 16px;
-    color: var(--text-primary);
+    color: var(--warning);
 }
 
 .edit-btn {
@@ -55,13 +55,13 @@
 }
 
 .delete-btn {
-    background-color: var(--surface);
-    color: #FF0000;
+    background-color: #FF0000;
+    color: var(--surface);
     border: solid 2px #FF0000;
 }
 
 .delete-btn:hover {
-    background-color: #FF0000;
-    color: var(--surface);
+    background-color: var(--surface);
+    color: #FF0000;
     border: solid 2px #FF0000;
 }

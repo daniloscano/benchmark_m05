@@ -2,6 +2,7 @@ import {useContext, useEffect} from "react";
 import {CommentsContext} from "../../../contexts/CommentsContext.jsx";
 import UserComment from "./UserComment.jsx";
 import {useParams} from "react-router-dom";
+import './commentsList.css';
 
 const CommentsList = () => {
     const {commentsList, getBookComments} = useContext(CommentsContext)
@@ -13,7 +14,7 @@ const CommentsList = () => {
 
     return (
         <>
-            <div className="container">
+            <div className="container comments-list-container">
                 {
                     commentsList && commentsList.map((comment, index) => (
                         <UserComment

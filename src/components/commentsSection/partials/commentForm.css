@@ -1,0 +1,50 @@
+.comment-form-container {
+    background-color: var(--surface);
+    border: solid 2px var(--border);
+    border-radius: 16px;
+}
+
+#new-comment-text-input {
+    background-color: transparent;
+    color: var(--text-primary);
+    outline: none;
+    border: solid 1px var(--text-primary);
+}
+
+#new-comment-text-input::placeholder {
+    color: var(--text-primary);
+}
+
+#new-rating-input .p-rating-item {
+    padding: 0 0.3rem;
+}
+
+#new-rating-input .p-rating-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--warning);
+}
+
+.clear-form-btn {
+    background-color: var(--surface);
+    color: var(--text-secondary);
+    border: solid 2px var(--text-secondary);
+}
+
+.clear-form-btn:hover {
+    background-color: var(--text-secondary);
+    color: var(--surface);
+    border: solid 2px var(--text-secondary);
+}
+
+.add-comment-btn {
+    background-color: var(--success);
+    color: var(--surface);
+    border: solid 2px var(--success);
+}
+
+.add-comment-btn:hover {
+    background-color: var(--surface);
+    color: var(--success);
+    border: solid 2px var(--success);
+}

@@ -46,7 +46,8 @@ const UserComment = ({comment}) => {
                                     onChange={commentChange}
                                     ref={inputRef}
                                     value={text}
-                                    type="text"/>
+                                    type="text"
+                                />
                             )
                         }
                         {

@@ -7,6 +7,10 @@
     --accent: #E07A5F;
     --accent-hover: #C1584A;
     --border: #E1D9CD;
+    --success: #4CAF50;
+    --error: #E53E3E;
+    --warning: #D69E2E;
+    --info: #4299E1;
 }
 
 :root[data-theme="dark"] {
