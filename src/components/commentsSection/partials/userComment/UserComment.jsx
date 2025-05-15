@@ -1,12 +1,13 @@
 import {Rating} from "primereact/rating";
-import './userComment.css'
 import {useContext, useEffect, useRef, useState} from "react";
 import {Pencil, Send, Trash} from "lucide-react";
 import {CommentsContext} from "../../../../contexts/CommentsContext.jsx";
 import {useParams} from "react-router-dom";
+import {Toast} from "primereact/toast";
+import './userComment.css';
 
 const UserComment = ({comment}) => {
-    const { getBookComments, putBookComment, deleteBookComment } = useContext(CommentsContext)
+    const { success, fail, getBookComments, putBookComment, deleteBookComment } = useContext(CommentsContext)
     const [onEdit, setOnEdit] = useState(false)
     const [text, setText] = useState(comment.comment)
     const [rating, setRating] = useState(comment.rate)
@@ -14,19 +15,14 @@ const UserComment = ({comment}) => {
     const { asin } = useParams()
 
     const inputRef = useRef(null)
+    const notify = useRef(null)
 
     const editHandler = async () => {
         setOnEdit(prev => !prev);
 
         if(onEdit) {
             await editComment();
-            await getBookComments(asin);
         }
-    }
-
-    const deleteHandler = async () => {
-        await deleteBookComment(comment._id);
-        await getBookComments(asin);
     }
 
     const commentChange = (e) => {
@@ -47,8 +43,30 @@ const UserComment = ({comment}) => {
 
     const editComment = async () => {
         await putBookComment(comment._id, commentPayload());
-
         await getBookComments(asin);
+    }
+
+    const deleteHandler = async () => {
+        await deleteBookComment(comment._id);
+        await getBookComments(asin);
+    }
+
+    const notificationHandler = () => {
+        const notification = success.summary
+            ? success
+            : fail.summary
+                ? fail
+                : null;
+
+        if (notification) {
+            notify.current.show(
+                {
+                    severity: notification.type,
+                    summary: notification.summary,
+                    detail: notification.message
+                }
+            )
+        }
     }
 
     useEffect(() => {
@@ -57,8 +75,14 @@ const UserComment = ({comment}) => {
         }
     }, [onEdit]);
 
+    useEffect(() => {
+        notificationHandler()
+    }, [success.summary, fail.summary]);
+
+
     return (
         <>
+            <Toast ref={notify} position='top-right' />
             <div className="row align-items-center my-2 py-2 comment-item">
                 <div className="col col-2 d-flex justify-content-center">
                     <div className="comment-user">

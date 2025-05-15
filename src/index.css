@@ -36,3 +36,27 @@ main {
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+.p-toast .p-toast-message-success {
+    background-color: #EDF7EE;
+    padding: 1.4rem;
+    border-radius: 8px;
+    border: solid 1px #C8E6C9;
+    color: #2F6627;
+}
+
+.p-toast .p-toast-message-success .p-toast-message-icon {
+    display: none;
+}
+
+.p-toast.p-toast-message-error {
+    background-color: #FDECEA;
+    padding: 1.4rem;
+    border-radius: 8px;
+    border: solid 1px #F5C6CB;
+    color: #A12622;
+}
+
+.p-toast.p-toast-message-error.p-toast-message-icon {
+    display: none;
+}

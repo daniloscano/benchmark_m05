@@ -6,8 +6,8 @@ export const CommentsProvider = ({ children }) => {
     const [ commentsList, setCommentsList ] = useState([])
     const [ isLoading, setIsLoading ] = useState(false)
     const [ error, setError ] = useState('')
-    const [ success, setSuccess ] = useState('')
-    const [ fail, setFail ] = useState('')
+    const [ success, setSuccess ] = useState({})
+    const [ fail, setFail ] = useState({})
     
     const getBookComments = async (bookId) => {
         try {
@@ -39,9 +39,22 @@ export const CommentsProvider = ({ children }) => {
                     },
                     body: JSON.stringify(payload)
                 });
+            setSuccess(
+                {
+                    type: 'success',
+                    summary: 'Comment Added!',
+                    message: 'Your comment has been successfully added'
+                }
+            )
             return await response.json();
         } catch (e) {
-            setError(e.message)
+            setFail(
+                {
+                    type: 'danger',
+                    summary: 'Error',
+                    message: 'Something went wrong. Try again later...'
+                }
+            )
         }
     }
 
@@ -56,9 +69,22 @@ export const CommentsProvider = ({ children }) => {
                     },
                     body: JSON.stringify(payload)
                 });
+            setSuccess(
+                {
+                    type: 'success',
+                    summary: 'Comment Updated!',
+                    message: 'Your comment has been successfully updated'
+                }
+            )
             return await response.json();
         } catch (e) {
-            setError(e.message)
+            setFail(
+                {
+                    type: 'danger',
+                    summary: 'Error',
+                    message: 'Something went wrong. Try again later...'
+                }
+            )
         }
     }
 
@@ -72,9 +98,22 @@ export const CommentsProvider = ({ children }) => {
                         "Authorization": `Bearer ${import.meta.env.VITE_API_KEY}`
                     }
                 });
+            setSuccess(
+                {
+                    type: 'success',
+                    summary: 'Comment Deleted!',
+                    message: 'Your comment has been successfully deleted'
+                }
+            )
             return await response.json();
         } catch (e) {
-            setError(e.message)
+            setFail(
+                {
+                    type: 'danger',
+                    summary: 'Error',
+                    message: 'Something went wrong. Try again later...'
+                }
+            )
         }
     }
 
@@ -83,7 +122,8 @@ export const CommentsProvider = ({ children }) => {
             {
                 commentsList, getBookComments,
                 postBookComment, putBookComment, deleteBookComment,
-                isLoading, error
+                isLoading, error,
+                success, fail
             }
         }>
             { children }
