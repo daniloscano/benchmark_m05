@@ -19,5 +19,5 @@ createRoot(document.getElementById('root')).render(
                 </BooksProvider>
             </ThemeProvider>
         </PrimeReactProvider>
-    </StrictMode>,
+    </StrictMode>
 )

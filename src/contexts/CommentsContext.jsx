@@ -1,4 +1,6 @@
-import {createContext, useState} from "react";
+import {createContext, useState, useRef} from "react";
+import {Toast} from "primereact/toast";
+
 
 export const CommentsContext = createContext()
 
@@ -6,6 +8,9 @@ export const CommentsProvider = ({ children }) => {
     const [ commentsList, setCommentsList ] = useState([])
     const [ isLoading, setIsLoading ] = useState(false)
     const [ error, setError ] = useState('')
+
+    const toast = useRef(null)
+
     const [ success, setSuccess ] = useState({})
     const [ fail, setFail ] = useState({})
     
@@ -39,22 +44,22 @@ export const CommentsProvider = ({ children }) => {
                     },
                     body: JSON.stringify(payload)
                 });
-            setSuccess(
+            toast.current.show(
                 {
-                    type: 'success',
+                    severity: 'success',
                     summary: 'Comment Added!',
-                    message: 'Your comment has been successfully added'
+                    detail: 'Your comment has been successfully added'
                 }
-            )
+            );
             return await response.json();
         } catch (e) {
-            setFail(
+            toast.current.show(
                 {
-                    type: 'danger',
-                    summary: 'Error',
-                    message: 'Something went wrong. Try again later...'
+                    severity: 'danger',
+                    summary: 'Error!',
+                    detail: 'Something went wrong. Try again later...'
                 }
-            )
+            );
         }
     }
 
@@ -69,22 +74,22 @@ export const CommentsProvider = ({ children }) => {
                     },
                     body: JSON.stringify(payload)
                 });
-            setSuccess(
+            toast.current.show(
                 {
-                    type: 'success',
+                    severity: 'success',
                     summary: 'Comment Updated!',
-                    message: 'Your comment has been successfully updated'
+                    detail: 'Your comment has been successfully updated'
                 }
-            )
+            );
             return await response.json();
         } catch (e) {
-            setFail(
+            toast.current.show(
                 {
-                    type: 'danger',
-                    summary: 'Error',
-                    message: 'Something went wrong. Try again later...'
+                    severity: 'danger',
+                    summary: 'Error!',
+                    detail: 'Something went wrong. Try again later...'
                 }
-            )
+            );
         }
     }
 
@@ -98,22 +103,22 @@ export const CommentsProvider = ({ children }) => {
                         "Authorization": `Bearer ${import.meta.env.VITE_API_KEY}`
                     }
                 });
-            setSuccess(
+            toast.current.show(
                 {
-                    type: 'success',
+                    severity: 'success',
                     summary: 'Comment Deleted!',
-                    message: 'Your comment has been successfully deleted'
+                    detail: 'Your comment has been successfully deleted'
                 }
-            )
+            );
             return await response.json();
         } catch (e) {
-            setFail(
+            toast.current.show(
                 {
-                    type: 'danger',
-                    summary: 'Error',
-                    message: 'Something went wrong. Try again later...'
+                    severity: 'danger',
+                    summary: 'Error!',
+                    detail: 'Something went wrong. Try again later...'
                 }
-            )
+            );
         }
     }
 
@@ -126,6 +131,7 @@ export const CommentsProvider = ({ children }) => {
                 success, fail
             }
         }>
+            <Toast ref={toast} position='top-right' />
             { children }
         </CommentsContext.Provider>
     )

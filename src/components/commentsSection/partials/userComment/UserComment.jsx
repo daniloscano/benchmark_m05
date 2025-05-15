@@ -2,25 +2,23 @@ import {Rating} from "primereact/rating";
 import {useContext, useEffect, useRef, useState} from "react";
 import {Pencil, Send, Trash} from "lucide-react";
 import {CommentsContext} from "../../../../contexts/CommentsContext.jsx";
-import {useParams} from "react-router-dom";
-import {Toast} from "primereact/toast";
+import {useParams} from "react-router-dom"
 import './userComment.css';
 
 const UserComment = ({comment}) => {
-    const { success, fail, getBookComments, putBookComment, deleteBookComment } = useContext(CommentsContext)
+    const {getBookComments, putBookComment, deleteBookComment} = useContext(CommentsContext)
     const [onEdit, setOnEdit] = useState(false)
     const [text, setText] = useState(comment.comment)
     const [rating, setRating] = useState(comment.rate)
 
-    const { asin } = useParams()
+    const {asin} = useParams()
 
     const inputRef = useRef(null)
-    const notify = useRef(null)
 
     const editHandler = async () => {
         setOnEdit(prev => !prev);
 
-        if(onEdit) {
+        if (onEdit) {
             await editComment();
         }
     }
@@ -51,38 +49,15 @@ const UserComment = ({comment}) => {
         await getBookComments(asin);
     }
 
-    const notificationHandler = () => {
-        const notification = success.summary
-            ? success
-            : fail.summary
-                ? fail
-                : null;
-
-        if (notification) {
-            notify.current.show(
-                {
-                    severity: notification.type,
-                    summary: notification.summary,
-                    detail: notification.message
-                }
-            )
-        }
-    }
-
     useEffect(() => {
         if (onEdit && inputRef.current) {
             inputRef.current.focus();
         }
     }, [onEdit]);
 
-    useEffect(() => {
-        notificationHandler()
-    }, [success.summary, fail.summary]);
-
 
     return (
         <>
-            <Toast ref={notify} position='top-right' />
             <div className="row align-items-center my-2 py-2 comment-item">
                 <div className="col col-2 d-flex justify-content-center">
                     <div className="comment-user">
@@ -126,15 +101,14 @@ const UserComment = ({comment}) => {
                         className="btn d-flex justify-content-center align-items-center rounded rounded-2 p-2 edit-btn"
                     >
                         {
-                            !onEdit ? <Pencil size={20} /> : <Send size={20} />
+                            !onEdit ? <Pencil size={20}/> : <Send size={20}/>
                         }
-
                     </button>
                     <button
                         onClick={deleteHandler}
                         className="btn d-flex justify-content-center align-items-center rounded rounded-2 p-2 delete-btn"
                     >
-                        <Trash size={20} />
+                        <Trash size={20}/>
                     </button>
                 </div>
             </div>
