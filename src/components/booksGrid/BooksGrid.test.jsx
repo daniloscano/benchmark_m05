@@ -1,7 +1,7 @@
 import {render, screen, waitFor} from "@testing-library/react";
 import BooksGrid from "./BooksGrid.jsx";
 import {MemoryRouter} from "react-router-dom";
-import {BooksContext, BooksProvider} from "../../contexts/BooksContext.jsx";
+import {BooksProvider} from "../../contexts/BooksContext.jsx";
 
 describe('Test for BooksGrid component', () => {
 
