@@ -36,6 +36,7 @@ const BooksGrid = () => {
                                         className="col"
                                     >
                                         <BookCard
+                                            data-testid="book-card"
                                             book={book}
                                         />
                                     </div>
