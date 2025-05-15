@@ -2,7 +2,7 @@ import {useContext, useEffect} from "react";
 import {BooksContext} from "../../contexts/BooksContext.jsx";
 import BookCard from "../bookCard/BookCard.jsx";
 import './booksGrid.css'
-import Loader from "../../loader/Loader.jsx";
+import Loader from "../loader/Loader.jsx";
 import Error from "../error/Error.jsx";
 
 const BooksGrid = () => {

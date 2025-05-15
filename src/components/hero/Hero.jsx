@@ -5,6 +5,7 @@ const Hero = () => {
         <>
             <header>
                 <div
+                    data-testid="hero-content"
                     className="container-fluid d-flex flex-column justify-content-center align-items-center gap-3 w-50 h-100 hero-content"
                 >
                     <h1 className="hero-title">EpiBooks</h1>

@@ -3,7 +3,7 @@ import {CommentsContext} from "../../../../contexts/CommentsContext.jsx";
 import UserComment from "../userComment/UserComment.jsx";
 import {useParams} from "react-router-dom";
 import './commentsList.css';
-import Loader from "../../../../loader/Loader.jsx";
+import Loader from "../../../loader/Loader.jsx";
 import Error from "../../../error/Error.jsx";
 
 const CommentsList = () => {
