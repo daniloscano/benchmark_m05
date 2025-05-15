@@ -58,7 +58,10 @@ const UserComment = ({comment}) => {
 
     return (
         <>
-            <div className="row align-items-center my-2 py-2 comment-item">
+            <div
+                data-testid="user-comment"
+                className="row align-items-center my-2 py-2 comment-item"
+            >
                 <div className="col col-2 d-flex justify-content-center">
                     <div className="comment-user">
                         {comment.author[0].toUpperCase()}
