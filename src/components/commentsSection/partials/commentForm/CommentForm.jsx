@@ -45,6 +45,7 @@ const CommentForm = () => {
         <>
             <div className="container rounded rounded-4 mt-4 p-3 comment-form-container">
                 <form
+                    data-testid="comment-form"
                     onSubmit={submitHandler}
                     onReset={clearFormValues}
                 >
@@ -59,6 +60,7 @@ const CommentForm = () => {
                     />
                     <div className="d-flex justify-content-between align-items-center mt-3">
                         <Rating
+                            data-testid="rating-select"
                             id="new-rating-input"
                             onChange={newRatingChange}
                             value={newRating}
