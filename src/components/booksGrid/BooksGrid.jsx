@@ -32,11 +32,11 @@ const BooksGrid = () => {
                             !isLoading && !error && books && (
                                 books.map((book, index) => (
                                     <div
+                                        data-testid="book-card"
                                         key={`book-card-${index}`}
                                         className="col"
                                     >
                                         <BookCard
-                                            data-testid="book-card"
                                             book={book}
                                         />
                                     </div>
