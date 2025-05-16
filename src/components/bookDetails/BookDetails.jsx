@@ -3,7 +3,7 @@ import {BooksContext} from "../../contexts/BooksContext.jsx";
 import {useParams} from "react-router-dom";
 import './bookDetails.css'
 import CommentsSection from "../commentsSection/CommentsSection.jsx";
-import Loader from "../../loader/Loader.jsx";
+import Loader from "../loader/Loader.jsx";
 import Error from "../error/Error.jsx";
 
 const BookDetails = () => {
