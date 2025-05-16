@@ -1,40 +1,10 @@
-import {render, screen, fireEvent, waitFor, act} from "@testing-library/react";
-import {BooksProvider} from "../../contexts/BooksContext.jsx";
+import {render, screen, fireEvent, act, waitFor} from '@testing-library/react';
 import {MemoryRouter} from "react-router-dom";
-import SearchBar from "../searchBar/SearchBar.jsx";
+import {BooksProvider} from "../../contexts/BooksContext.jsx";
 import BooksGrid from "./BooksGrid.jsx";
+import SearchBar from "../searchBar/SearchBar.jsx";
 
-describe('Test for filtering in BooksGrid component', () => {
-
-    const mockBooks = [
-        {
-            title: 'first book',
-            img: 'https://img',
-            category: 'category1',
-            price: '1.00'
-        },
-        {
-            title: 'second book',
-            img: 'https://img',
-            category: 'category2',
-            price: '2.00'
-        },
-        {
-            title: 'third book',
-            img: 'https://img',
-            category: 'category3',
-            price: '3.00'
-        },
-    ]
-
-    const matchingBooks = [
-        {
-            title: 'first book',
-            img: 'https://img',
-            category: 'category1',
-            price: '1.00'
-        }
-    ]
+describe('Test for Books Grid component', () => {
 
     beforeEach(() => {
         vi.stubGlobal('fetch', vi.fn())
@@ -44,7 +14,34 @@ describe('Test for filtering in BooksGrid component', () => {
         vi.resetAllMocks()
     })
 
-    it('should render all book cards on mount', async () => {
+    const mockBooks = [
+        {
+            title: 'First Book',
+            img: 'https://img',
+            category: 'category1',
+            price: '1.00'
+        },
+        {
+            title: 'Second Book',
+            img: 'https://img',
+            category: 'category2',
+            price: '2.00'
+        },
+        {
+            title: 'Another Second Book',
+            img: 'https://img',
+            category: 'category2',
+            price: '2.00'
+        },
+        {
+            title: 'Third Book',
+            img: 'https://img',
+            category: 'category3',
+            price: '3.00'
+        }
+    ]
+
+    it('should render as many book card as book objects in books', async () => {
         fetch.mockResolvedValue({
             ok: true,
             json: async () => mockBooks
@@ -53,58 +50,68 @@ describe('Test for filtering in BooksGrid component', () => {
         render(
             <MemoryRouter>
                 <BooksProvider>
-                    <SearchBar/>
-                    <BooksGrid/>
+                    <BooksGrid />
                 </BooksProvider>
             </MemoryRouter>
         )
 
         await waitFor(() => {
-            const allBookCards = screen.queryAllByTestId('book-card')
-            expect(allBookCards).toHaveLength(3)
+            const bookCards = screen.getAllByTestId('book-card')
+            expect(bookCards).toHaveLength(mockBooks.length)
         })
     });
 
-    it('should render only filter-matching book cards on search', async () => {
-        fetch.mockResolvedValueOnce({
-            ok: true,
-            json: async () => mockBooks,
-        });
+    it('should change query state when user write in search bar input', () => {
+        render(
+            <MemoryRouter>
+                <BooksProvider>
+                    <SearchBar />
+                </BooksProvider>
+            </MemoryRouter>
+        )
 
+        const searchInput = screen.getByPlaceholderText('Search...')
+        fireEvent.change(searchInput, {
+            target: {
+                value: 'Second'
+            }
+        })
+        expect(searchInput.value).toBe('Second')
+    });
+
+    it('should re-run useEffect on query change and render only matching-filter books', async () => {
         fetch.mockResolvedValueOnce({
             ok: true,
-            json: async () => matchingBooks,
-        });
+            json: async () => mockBooks
+        })
 
         render(
             <MemoryRouter>
                 <BooksProvider>
-                    <SearchBar/>
-                    <BooksGrid/>
+                    <SearchBar />
+                    <BooksGrid />
                 </BooksProvider>
             </MemoryRouter>
         )
 
         await waitFor(() => {
-            const allBooks = screen.queryAllByTestId('book-card')
-            expect(allBooks).toHaveLength(3)
+            const allBooksCards = screen.getAllByTestId('book-card')
+            expect(allBooksCards).toHaveLength(mockBooks.length)
         })
 
         const searchInput = screen.getByPlaceholderText('Search...')
-
         fireEvent.change(searchInput, {
             target: {
-                value: 'first'
+                value: 'Second'
             }
         })
-        expect(searchInput).toHaveValue('first')
+        expect(searchInput.value).toBe('Second')
+
+        const matchingBooks = mockBooks.filter(book => book.title.includes('Second'))
 
         await waitFor(() => {
-            const matchingBooks = screen.queryAllByTestId('book-card')
-            expect(matchingBooks).toHaveLength(1)
-
-            const searchedBook = screen.getByText('first book')
-            expect(searchedBook).toBeInTheDocument()
+            const matchingBooksCards = screen.getAllByTestId('book-card')
+            expect(matchingBooksCards).toHaveLength(matchingBooks.length)
         })
-    })
-})
+    });
+});
