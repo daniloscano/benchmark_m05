@@ -126,5 +126,7 @@ describe('Test for Book Details component', () => {
 
         const userComments = await screen.findAllByTestId('user-comment')
         expect(userComments).toHaveLength(2)
+        expect(userComments[0]).toHaveTextContent('First Comment')
+        expect(userComments[1]).toHaveTextContent('Second Comment')
     })
 })
