@@ -10,9 +10,6 @@ export const CommentsProvider = ({ children }) => {
     const [ error, setError ] = useState('')
 
     const toast = useRef(null)
-
-    const [ success, setSuccess ] = useState({})
-    const [ fail, setFail ] = useState({})
     
     const getBookComments = async (bookId) => {
         try {
@@ -127,8 +124,7 @@ export const CommentsProvider = ({ children }) => {
             {
                 commentsList, getBookComments,
                 postBookComment, putBookComment, deleteBookComment,
-                isLoading, error,
-                success, fail
+                isLoading, error
             }
         }>
             <Toast ref={toast} position='top-right' />

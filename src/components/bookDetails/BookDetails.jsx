@@ -17,7 +17,10 @@ const BookDetails = () => {
 
     return (
         <>
-            <section className="pt-4">
+            <section
+                data-testid="book-details"
+                className="pt-4"
+            >
                 <div className="container">
                     <div className="row">
                         {
@@ -27,7 +30,7 @@ const BookDetails = () => {
                             !isLoading && error && !bookDetails && (<Error error={error} />)
                         }
                         {
-                            !isLoading && !error && bookDetails && (
+                            !isLoading && !error && bookDetails?.asin && (
                                 <>
                                     <div className="col col-3">
                                         <img

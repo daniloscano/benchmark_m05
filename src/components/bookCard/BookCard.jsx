@@ -11,7 +11,10 @@ const BookCard = ({book}) => {
 
     return (
         <>
-            <Link to={`/detail/${book.asin}`}>
+            <Link
+                data-testid="link-to-details"
+                to={`/detail/${book.asin}`}
+            >
                 <div
                     onMouseOver={hoverHandler}
                     onMouseOut={hoverHandler}
