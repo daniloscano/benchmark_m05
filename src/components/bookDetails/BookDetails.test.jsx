@@ -90,16 +90,19 @@ describe('Test for Book Details component', () => {
     });
 
     it('should render comment section component with comment info from url param', async () => {
-        fetch.mockResolvedValueOnce({
-            ok: true,
-            json: async () => mockComments
-        })
+        fetch.mockImplementation((url) => {
+            if (url.endsWith('/comments')) {
+                return Promise.resolve({
+                    ok: true,
+                    json: async () => mockComments
+                });
+            }
 
-        fetch.mockResolvedValueOnce({
-            ok: true,
-            json: async () => mockBookDetails
-        })
-
+            return Promise.resolve({
+                ok: true,
+                json: async () => [mockBookDetails]
+            });
+        });
 
         render(
             <MemoryRouter initialEntries={["/detail/B01"]}>
@@ -117,6 +120,9 @@ describe('Test for Book Details component', () => {
 
         const bookDetails = await screen.findByTestId('book-details');
         expect(bookDetails).toBeInTheDocument();
+
+        const title = await screen.findByText(mockBookDetails.title);
+        expect(title).toBeInTheDocument();
 
         const userComments = await screen.findAllByTestId('user-comment')
         expect(userComments).toHaveLength(2)

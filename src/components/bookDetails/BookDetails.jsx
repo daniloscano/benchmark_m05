@@ -30,7 +30,7 @@ const BookDetails = () => {
                             !isLoading && error && !bookDetails && (<Error error={error} />)
                         }
                         {
-                            !isLoading && !error && bookDetails && (
+                            !isLoading && !error && bookDetails?.asin && (
                                 <>
                                     <div className="col col-3">
                                         <img
