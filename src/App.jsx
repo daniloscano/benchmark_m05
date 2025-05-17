@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import DetailPage from "./pages/DetailPage.jsx";
+import NotFound from "./components/notFound/NotFound.jsx";
 
 const App = () => {
 
@@ -12,7 +13,7 @@ const App = () => {
 
                 <Route path='/detail/:asin' element={<DetailPage />} />
 
-                <Route path='*' element={<h1>404 Page not Found</h1>} />
+                <Route path='*' element={<NotFound />} />
             </Routes>
         </Router>
         </>
