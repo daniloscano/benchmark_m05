@@ -17,7 +17,10 @@ const BookDetails = () => {
 
     return (
         <>
-            <section className="pt-4">
+            <section
+                data-testid="book-details"
+                className="pt-4"
+            >
                 <div className="container">
                     <div className="row">
                         {

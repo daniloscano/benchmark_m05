@@ -1,9 +1,10 @@
 import {fireEvent, render, screen, waitFor} from "@testing-library/react";
 import {MemoryRouter, Routes, Route} from "react-router-dom";
 import {BooksProvider} from "../../contexts/BooksContext.jsx";
-import BooksGrid from "../booksGrid/BooksGrid.jsx";
-import DetailPage from "../../pages/DetailPage.jsx";
 import {CommentsProvider} from "../../contexts/CommentsContext.jsx";
+import {ThemeProvider} from "../../contexts/ThemeContext.jsx";
+import BooksGrid from "../booksGrid/BooksGrid.jsx";
+import BookDetails from "./BookDetails.jsx";
 
 describe('Test for Book Details component', () => {
     const mockBooks = [
@@ -50,44 +51,44 @@ describe('Test for Book Details component', () => {
         vi.resetAllMocks()
     })
 
-    it('should render book details, comments list and comments components on click above a card', async () => {
+    it('should render book grid, and on click above a card should unmount books grid', async () => {
         render(
-            <MemoryRouter initialEntries={['/']}>
-                <BooksProvider>
-
-                    <Routes>
-                        <Route path="/" element={<BooksGrid/>}/>
-                        <Route path="/detail/:asin" element={
-                            <CommentsProvider>
-                                <DetailPage/>
-                            </CommentsProvider>
-                        }/>
-                    </Routes>
-
-                </BooksProvider>
+            <MemoryRouter>
+                <ThemeProvider>
+                    <BooksProvider>
+                        <CommentsProvider>
+                            <Routes>
+                                <Route path="/" element={<BooksGrid/>}/>
+                                <Route path="/detail/:asin" element={<BookDetails/>}/>
+                            </Routes>
+                        </CommentsProvider>
+                    </BooksProvider>
+                </ThemeProvider>
             </MemoryRouter>
         )
 
+        const booksGrid = screen.getByTestId('books-grid')
+        expect(booksGrid).toBeInTheDocument()
+        expect(screen.queryByTestId('book-details')).not.toBeInTheDocument()
 
         await waitFor(() => {
             const bookCards = screen.getAllByTestId('book-card')
             expect(bookCards).toHaveLength(mockBooks.length)
 
-            fireEvent.click(bookCards[0])
+            const firstBook = screen.getByText('First Book')
+            expect(firstBook).toBeInTheDocument()
         })
 
-        /* const bookCards = screen.getAllByTestId('book-card') */
+        const goToDetails = screen.getByTestId('link-to-details')
+        expect(goToDetails).toBeInTheDocument()
+        expect(goToDetails).toHaveAttribute('href', '/detail/B01')
+
+        fireEvent.click(goToDetails)
+
+        expect(booksGrid).not.toBeInTheDocument()
+        const bookDetails = screen.getByTestId('book-details')
+        expect(bookDetails).toBeInTheDocument()
+    });
 
 
-        await waitFor(() => {
-            const bookDetails = screen.getByText(mockBooks[0].title)
-            expect(bookDetails).toBeInTheDocument()
-        })
-
-        await waitFor(() => {
-            const firstComment = screen.getByText('First Comment')
-            expect(firstComment).toBeInTheDocument()
-        })
-
-    })
 })
