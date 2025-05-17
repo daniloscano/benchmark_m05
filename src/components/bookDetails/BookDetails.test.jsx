@@ -5,6 +5,7 @@ import {CommentsProvider} from "../../contexts/CommentsContext.jsx";
 import {ThemeProvider} from "../../contexts/ThemeContext.jsx";
 import BooksGrid from "../booksGrid/BooksGrid.jsx";
 import BookDetails from "./BookDetails.jsx";
+import DetailPage from "../../pages/DetailPage.jsx";
 
 describe('Test for Book Details component', () => {
     const mockBooks = [
@@ -22,29 +23,22 @@ describe('Test for Book Details component', () => {
     const mockComments = [
         {
             elementId: 'B01',
-            comment: 'First Comment'
+            comment: 'First Comment',
+            rate: 4,
+            _id: 'comment1',
+            author: 'John'
         },
         {
             elementId: 'B01',
-            comment: 'Second Comment'
+            comment: 'Second Comment',
+            rate: 5,
+            _id: 'comment2',
+            author: 'Alice'
         },
-    ]
+    ];
 
     beforeEach(() => {
-        vi.stubGlobal('fetch', vi.fn()
-            .mockResolvedValueOnce({
-                ok: true,
-                json: async () => mockBooks
-            })
-            .mockResolvedValueOnce({
-                ok: true,
-                json: async () => mockBookDetails
-            })
-            .mockResolvedValueOnce({
-                ok: true,
-                json: async () => mockComments
-            })
-        )
+        vi.stubGlobal('fetch', vi.fn())
     })
 
     afterEach(() => {
@@ -52,8 +46,13 @@ describe('Test for Book Details component', () => {
     })
 
     it('should render book grid, and on click above a card should unmount books grid', async () => {
+        fetch.mockResolvedValueOnce({
+            ok: true,
+            json: async () => mockBooks
+        })
+
         render(
-            <MemoryRouter>
+            <MemoryRouter initialEntries={["/"]}>
                 <ThemeProvider>
                     <BooksProvider>
                         <CommentsProvider>
@@ -90,5 +89,36 @@ describe('Test for Book Details component', () => {
         expect(bookDetails).toBeInTheDocument()
     });
 
+    it('should render comment section component with comment info from url param', async () => {
+        fetch.mockResolvedValueOnce({
+            ok: true,
+            json: async () => mockComments
+        })
 
+        fetch.mockResolvedValueOnce({
+            ok: true,
+            json: async () => mockBookDetails
+        })
+
+
+        render(
+            <MemoryRouter initialEntries={["/detail/B01"]}>
+                <ThemeProvider>
+                    <BooksProvider>
+                        <CommentsProvider>
+                            <Routes>
+                                <Route path="/detail/:asin" element={<BookDetails/>}/>
+                            </Routes>
+                        </CommentsProvider>
+                    </BooksProvider>
+                </ThemeProvider>
+            </MemoryRouter>
+        )
+
+        const bookDetails = await screen.findByTestId('book-details');
+        expect(bookDetails).toBeInTheDocument();
+
+        const userComments = await screen.findAllByTestId('user-comment')
+        expect(userComments).toHaveLength(2)
+    })
 })

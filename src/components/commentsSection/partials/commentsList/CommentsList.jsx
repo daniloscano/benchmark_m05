@@ -16,12 +16,15 @@ const CommentsList = () => {
 
     return (
         <>
-            <div className="container comments-list-container">
+            <div
+                data-testid="comments-list"
+                className="container comments-list-container"
+            >
                 {
-                    isLoading && !error && !commentsList && ( <Loader /> )
+                    isLoading && !error && commentsList.length === 0 && ( <Loader /> )
                 }
                 {
-                    !isLoading && error && !commentsList && ( <Error error={error} /> )
+                    !isLoading && error && commentsList.length === 0 && ( <Error error={error} /> )
                 }
                 {
                     !isLoading && !error && commentsList.length === 0 && (
