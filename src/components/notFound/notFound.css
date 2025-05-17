@@ -1,0 +1,32 @@
+.not-found-container {
+    height: 100dvh;
+    background-color: var(--background-secondary);
+    color: var(--text-secondary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.not-found-content h1 {
+    color: var(--text-primary);
+    margin-bottom: 1em;
+    font-size: 48px;
+}
+
+.back-home-btn {
+    margin-top: 2em;
+}
+
+.back-home-btn {
+    background-color: var(--background-secondary);
+    color: var(--text-secondary);
+    outline: solid 2px var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.back-home-btn:hover {
+    background-color: var(--text-secondary);
+    color: var(--background-secondary);
+    outline: solid 2px var(--text-secondary);
+}
