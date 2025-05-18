@@ -8,10 +8,14 @@
     align-items: center;
 }
 
+.not-found-image {
+    display: block;
+    margin: 0 auto;
+}
+
 .not-found-content h1 {
     color: var(--text-primary);
     margin-bottom: 1em;
-    font-size: 48px;
 }
 
 .back-home-btn {

@@ -14,7 +14,7 @@ const BooksGrid = () => {
         return () => {
             clearTimeout(searchHandler)
         }
-    }, [ query ]);
+    }, [query]);
 
     return (
         <>
@@ -25,15 +25,15 @@ const BooksGrid = () => {
             >
                 <div className="container p-3">
                     <h1 className="mt-3 section-title">Books</h1>
-                    <div className="row row-cols-1 row-cols-md-3 row-cols-lg-5 gy-4 mt-2">
+                    <div className="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 gy-4 mt-2">
                         {
-                            isLoading && !error && !books && ( <Loader />)
+                            isLoading && !error && books.length === 0 && (<Loader/>)
                         }
                         {
-                            !isLoading && error && !books && ( <Error error={error} /> )
+                            !isLoading && error && books.length === 0 && (<Error error={error}/>)
                         }
                         {
-                            !isLoading && !error && books && (
+                            !isLoading && !error && books.length !== 0 && (
                                 books.map((book, index) => (
                                     <div
                                         data-testid="book-card"

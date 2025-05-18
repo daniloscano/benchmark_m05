@@ -18,7 +18,7 @@ const CommentsList = () => {
         <>
             <div
                 data-testid="comments-list"
-                className="container comments-list-container"
+                className="container-fluid container-lg comments-list-container"
             >
                 {
                     isLoading && !error && commentsList.length === 0 && ( <Loader /> )

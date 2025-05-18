@@ -1,18 +1,40 @@
-.loader {
-    color: var(--accent);
-    width: 4px;
+.dot {
+    width: 10px;
     aspect-ratio: 1;
     border-radius: 50%;
-    box-shadow: 19px 0 0 7px, 38px 0 0 3px, 57px 0 0 0;
-    transform: translateX(-38px);
-    animation: l21 .5s infinite alternate linear;
+    background-color: var(--accent);
+    transform-origin: center center;
 }
 
-@keyframes l21 {
-    50% {
-        box-shadow: 19px 0 0 3px, 38px 0 0 7px, 57px 0 0 3px
-    }
-    100% {
-        box-shadow: 19px 0 0 0, 38px 0 0 3px, 57px 0 0 7px
-    }
+.dot1 {
+    animation: dot1Anim .5s infinite alternate linear;
+}
+
+.dot2 {
+    animation: dot2Anim .5s infinite alternate linear;
+}
+.dot3 {
+    animation: dot3Anim .5s infinite alternate linear; }
+
+/*
+   Calcoli delle scale:
+   - base 8px, i spread 7→3→0 corrispondono a diametri:
+     8+7*2=22px → scala 2.75
+     8+3*2=14px → scala 1.75
+     8+0*2=8px  → scala 1
+*/
+@keyframes dot1Anim {
+    0%   { transform: scale(2.75); }
+    50%  { transform: scale(1.75); }
+    100% { transform: scale(1);    }
+}
+@keyframes dot2Anim {
+    0%   { transform: scale(1.75); }
+    50%  { transform: scale(2.75); }
+    100% { transform: scale(1.75); }
+}
+@keyframes dot3Anim {
+    0%   { transform: scale(1);    }
+    50%  { transform: scale(1.75); }
+    100% { transform: scale(2.75); }
 }

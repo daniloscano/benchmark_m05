@@ -22,7 +22,7 @@ const BookDetails = () => {
                 className="pt-4"
             >
                 <div className="container">
-                    <div className="row">
+                    <div className="row gy-4 gy-md-2">
                         {
                             isLoading && !error && !bookDetails && (<Loader/>)
                         }
@@ -32,14 +32,14 @@ const BookDetails = () => {
                         {
                             !isLoading && !error && bookDetails?.asin && (
                                 <>
-                                    <div className="col col-3">
+                                    <div className="col col-12 col-md-3">
                                         <img
                                             className="img-fluid book-image"
                                             src={bookDetails.img}
                                             alt={bookDetails.title}
                                         />
                                     </div>
-                                    <div className="col col-9 px-3">
+                                    <div className="col col-12 col-md-9 px-3">
                                         <h1 className="book-title">{bookDetails.title}</h1>
                                         <p className="fs-4 book-category">Category: {bookDetails.category}</p>
                                         <p className="book-price">Price: {bookDetails.price} €</p>
@@ -52,12 +52,12 @@ const BookDetails = () => {
                                             repellat
                                             similique, tenetur veritatis?
                                         </p>
-                                        <CommentsSection/>
                                     </div>
                                 </>
                             )
                         }
                     </div>
+                    <CommentsSection/>
                 </div>
             </section>
         </>

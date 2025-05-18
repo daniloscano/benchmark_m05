@@ -1,0 +1,9 @@
+.comments-section {
+    max-width: 80%;
+}
+
+@media (max-width: 992px) {
+    .comments-section {
+        max-width: 100%;
+    }
+}

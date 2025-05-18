@@ -27,7 +27,7 @@ const BookCard = ({book}) => {
                     />
                     <div className="d-flex flex-column justify-content-end gap-2 card-details p-2 py-4">
                         <p
-                            className="fs-5 fw-bold truncate-2-lines"
+                            className="fs-6 fw-bold truncate-2-lines"
                         >
                             {book.title}
                         </p>
