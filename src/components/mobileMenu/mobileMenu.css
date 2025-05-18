@@ -1,0 +1,14 @@
+.mobile-menu {
+    height: 100%;
+    background-color: var(--background-primary);
+}
+
+.p-sidebar-header {
+    padding: 1rem;
+    background-color: var(--background-primary);
+    color: var(--text-secondary);
+}
+
+.p-sidebar-close {
+    color: var(--text-secondary);
+}

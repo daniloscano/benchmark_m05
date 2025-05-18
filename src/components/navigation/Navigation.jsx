@@ -1,8 +1,9 @@
-import {navLinks} from "./partials/navLinks.js";
-import NavigationLink from "./partials/NavigationLink.jsx";
+import {navLinks} from "../navigationLink/navLinks.js";
+import NavigationLink from "../navigationLink/NavigationLink.jsx";
 import SearchBar from "../searchBar/SearchBar.jsx";
 import ThemeToggler from "../themeToggler/ThemeToggler.jsx";
 import './navigation.css'
+import MobileMenuToggler from "../mobileMenuToogler/MobileMenuToggler.jsx";
 
 const Navigation = () => {
 
@@ -19,7 +20,7 @@ const Navigation = () => {
                                 EpiBooks
                             </a>
                         </div>
-                        <div className="d-flex align-items-center gap-3 navigation-links">
+                        <div className="d-none d-md-flex align-items-center gap-3 navigation-links">
                             {
                                 navLinks.map((link, index) => (
                                     <NavigationLink
@@ -33,6 +34,7 @@ const Navigation = () => {
                     <div className="d-flex align-items-center gap-2 navigation-action">
                         <SearchBar/>
                         <ThemeToggler/>
+                        <MobileMenuToggler />
                     </div>
                 </div>
             </nav>

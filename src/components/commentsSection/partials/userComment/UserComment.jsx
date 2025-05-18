@@ -62,13 +62,13 @@ const UserComment = ({comment}) => {
                 data-testid="user-comment"
                 className="row align-items-center my-2 py-2 comment-item"
             >
-                <div className="col col-2 d-flex justify-content-center">
+                <div className="col col-2 col-md-1">
                     <div className="comment-user">
                         {comment.author[0].toUpperCase()}
                     </div>
                 </div>
-                <div className="col col-8">
-                    <div className="d-flex flex-column align-items-start gap-2 py-2 comment-content">
+                <div className="col col-8 col-md-9">
+                    <div className="d-flex flex-column align-items-start gap-2 ps-1 ps-md-3 py-2 comment-content">
                         {
                             onEdit && (
                                 <input
@@ -98,7 +98,7 @@ const UserComment = ({comment}) => {
                         </div>
                     </div>
                 </div>
-                <div className="col col-2 d-flex justify-content-start gap-2">
+                <div className="col col-2 d-flex justify-content-end gap-2">
                     <button
                         onClick={editHandler}
                         className="btn d-flex justify-content-center align-items-center rounded rounded-2 p-2 edit-btn"
