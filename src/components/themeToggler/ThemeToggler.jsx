@@ -10,7 +10,7 @@ const ThemeToggler = () => {
         <>
             <button
                 onClick={toggleTheme}
-                className="btn rounded rounded-2 theme-btn"
+                className="d-none d-md-block btn rounded rounded-2 theme-btn"
             >
                 {
                     theme === 'light'
